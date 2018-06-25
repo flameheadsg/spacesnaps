@@ -15,7 +15,7 @@ body {
 .header {
   background-color: rgb(5, 0, 53);
   padding: 10px;
-  transform: scale(1.175);
+  transform: scale(0.8);
 }
 
 #spacesnaps {

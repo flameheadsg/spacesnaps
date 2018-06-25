@@ -57,6 +57,10 @@ class App extends Component {
           }
         });
       } else {
+        this.setState({
+          caption: 'Sorry, no images were found for your search term.',
+          url: ''
+        });
         this.getRandomPicture();
       }
 
@@ -67,7 +71,7 @@ class App extends Component {
     this.getRandomPicture();
     this.timerID = setInterval(
       () => this.getRandomPicture(),
-      2500
+      2000
     );
   }
 
