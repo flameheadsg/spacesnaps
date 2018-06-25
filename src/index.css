@@ -13,7 +13,7 @@ body {
 }
 
 .header {
-  background-color: rgb(22, 11, 48);
+  background-color: rgb(5, 0, 53);
   padding: 10px;
   transform: scale(1.175);
 }
@@ -45,4 +45,10 @@ body {
 #captionstyle {
   background-color: rgba(0, 0, 0, 0.75);
   transform: scale(1.25);
+  max-width: 1750px;
+  word-wrap: break-word;
+}
+
+#searchbar {
+  transform: scale(1.175);
 }
