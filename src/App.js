@@ -6,7 +6,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: 'space',
+      caption: '',
+      url: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,6 +24,33 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     window.alert('Search initiated successfully!');
+  }
+
+  componentDidMount() {
+    let queryURL = 'https://images-api.nasa.gov/search?q=' + this.state.value + '&media_type=image';
+    fetch(queryURL)
+    .then(res => res.json())
+    .then(data => {
+      let picture = data.collection.items[Math.floor(Math.random()*data.collection.items.length)];
+      console.log('CAPTION: ' + picture.data[0].title);
+      console.log('COLLECTION: ' + picture.href);
+      this.setState({
+        caption: picture.data[0].title
+      });
+
+      fetch(picture.href)
+      .then(res => res.json())
+      .then(data => {
+        let pictureURL = data.find(url => {
+          return url.endsWith("small.jpg");
+        });
+        console.log('IMAGES: ' + data);
+        console.log('IMAGE-URL: ' + pictureURL);
+        this.setState({
+          url: pictureURL
+        });
+      });
+    });
   }
 
   render() {
@@ -45,7 +74,10 @@ class App extends Component {
         </div>
 
         <br />
-        <Container />
+        <Container
+          caption={this.state.caption}
+          url={this.state.url}
+        />
       </div>
     );
   }

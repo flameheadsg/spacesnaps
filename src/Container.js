@@ -6,10 +6,10 @@ class Container extends Component {
   render() {
     return (
       <div id="container">
-        <Caption caption="placeholder caption" />
+        <Caption caption={this.props.caption} />
         <Image
-          url="https://images-assets.nasa.gov/image/PIA00122/PIA00122~small.jpg"
-          caption="placeholder caption"
+          url={this.props.url}
+          caption={this.props.caption}
         />
       </div>
     );

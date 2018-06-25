@@ -44,4 +44,5 @@ body {
 
 #captionstyle {
   background-color: rgba(0, 0, 0, 0.75);
+  transform: scale(1.25);
 }
